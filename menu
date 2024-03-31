@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Restaurant Menu</title>
+    <style>
+        /* Basic CSS for styling */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f2f2f2;
+        }
+        header {
+            background-color: #333;
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .menu {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        .section {
+            margin-bottom: 30px;
+        }
+        h2 {
+            color: #333;
+            text-transform: uppercase;
+            border-bottom: 2px solid #333;
+            padding-bottom: 5px;
+            margin-bottom: 15px;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+        li {
+            width: calc(100% / 3);
+            padding: 15px;
+            text-align: center;
+            background-color: #fff;
+            border-radius: 5px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+        li:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .item img {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 10px;
+        }
+        .item span {
+            font-weight: bold;
+            display: block;
+            margin-bottom: 5px;
+        }
+        .item .price {
+            color: #8b0000; /* Dark red color for price */
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Restaurant Name</h1>
+    </header>
+    <div class="menu">
+        <div class="section">
+            <h2>Appetizers</h2>
+            <ul id="appetizers"></ul>
+        </div>
+        <!-- Add more sections as needed -->
+    </div>
+
+    <script>
+        const menuItems = [
+            { name: "Item 1", price: "$10", image: "item1.jpg" },
+            { name: "Item 2", price: "$12", image: "item2.jpg" },
+            // Add more items similarly
+        ];
+
+        function generateMenuItems(items, containerId) {
+            const container = document.getElementById(containerId);
+            items.forEach(item => {
+                const li = document.createElement("li");
+                li.classList.add("item");
+
+                const img = document.createElement("img");
+                img.src = item.image;
+                img.alt = item.name;
+                li.appendChild(img);
+
+                const nameSpan = document.createElement("span");
+                nameSpan.textContent = item.name;
+                li.appendChild(nameSpan);
+
+                const priceSpan = document.createElement("span");
+                priceSpan.textContent = item.price;
+                priceSpan.classList.add("price");
+                li.appendChild(priceSpan);
+
+                container.appendChild(li);
+            });
+        }
+
+        generateMenuItems(menuItems, "appetizers");
+        // Generate items for other sections similarly
+    </script>
+</body>
+</html>
